@@ -1,9 +1,14 @@
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+package_name: Chuy_n___i_s__nh__ph_n_sang_th_p_ph_n
 allow_embedding: false
-package_name: M3_App_1
-name: M3 App 1
-startup_form: Form1
-renamed: true
+name: Phần PaaS | Đề tài 6
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
-dependencies: []
-services: []
+metadata: {logo_img: 'asset:tải xuống.png', description: Chuyển đổi số nhị phân sang thập phân,
+  title: Nhóm Baroibeo}
+startup_form: Form1
+renamed: true

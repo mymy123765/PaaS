@@ -12,3 +12,7 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- name: label_1
+  properties: {text: CHUYỂN ĐỔI SỐ NHỊ PHÂN SANG THẬP PHÂN, align: center}
+  type: Label
+  layout_properties: {slot: title}
