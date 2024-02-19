@@ -12,6 +12,18 @@ components:
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
+  - name: outlined_card_4
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'MMOFHZ,GGGGCW'}
+    components:
+    - name: box_luachon
+      properties:
+        items: [Chuyển số nhị phân sang thập phân, Chuyển số thập phân sang nhị phân]
+        align: full
+      type: DropDown
+      layout_properties: {grid_position: 'RFFXUI,LDBYBF'}
+      event_bindings: {change: box_luachon_change}
   - name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel
@@ -45,14 +57,3 @@ components:
       type: Button
       layout_properties: {grid_position: 'HLPWRD,CMUTAT'}
       event_bindings: {click: btn_chuyendoi_click}
-  - name: outlined_card_4
-    properties: {role: outlined-card}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'HXHEXG,VAXRTZ'}
-    components:
-    - name: box_luachon
-      properties:
-        items: [Chuyển số nhị phân sang thập phân, Chuyển số thập phân sang nhị phân]
-      type: DropDown
-      layout_properties: {grid_position: 'JMGVAB,QKTGEA'}
-      event_bindings: {change: box_luachon_change}
