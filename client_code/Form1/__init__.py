@@ -22,8 +22,10 @@ class Form1(Form1Template):
                     raise ValueError("Nhập không hợp lệ cho số nhị phân.")
                 
                 result, steps = self.binary_to_decimal(binary_input)
-                self.box_ketqua.text = f"Kết quả: {result}\n\nCác bước tính toán:\n{steps}"
+                self.box_ketqua.text = f"{result}\n"
                 self.box_ketqua.enabled = False
+                self.box_giaithuat.text = f"{steps}\n"
+                self.box_giaithuat.enabled = False
 
             elif option == "Chuyển số thập phân sang nhị phân":
                 # Kiểm tra tính hợp lệ của box_nhapso nếu chuyển thập phân sang nhị phân
@@ -32,8 +34,10 @@ class Form1(Form1Template):
                     raise ValueError("Nhập không hợp lệ cho số thập phân.")
                 
                 result, steps = self.decimal_to_binary(int(decimal_input))
-                self.box_ketqua.text = f"Kết quả: {result}\n\nCác bước tính toán:\n{steps}"
+                self.box_ketqua.text = f"{result}\n"
                 self.box_ketqua.enabled = False
+                self.box_giaithuat.text = f"{steps}\n"
+                self.box_giaithuat.enabled = False
 
             else:
                 raise ValueError("Tùy chọn không hợp lệ.")
@@ -44,25 +48,33 @@ class Form1(Form1Template):
             
     # Any code you write here will run before the form opens.
     def binary_to_decimal(self, binary_str):
-        decimal_num = int(binary_str, 2)
+        decimal_num = 0
         
-        steps = ""
+        steps = "Quá trình chuyển đổi:\n"
+        steps += f"    Số nhị phân: {binary_str}\n"
+        steps += "    Giải thích:\n"
         for i, digit in enumerate(reversed(binary_str)):
+            power = len(binary_str) - i - 1
             if digit == '1':
-                steps += f"2^{i} + "
-        steps = steps[:-2]  # Loại bỏ dấu cộng cuối cùng
-        
+                decimal_num += 2 ** power
+                steps += f"        {digit} x 2^{power} = {2 ** power}\n"
+            else:
+                steps += f"        {digit} x 2^{power} = 0 (bỏ qua)\n"
+
         return decimal_num, steps
     
     def decimal_to_binary(self, decimal_num):
-        binary_str = bin(decimal_num).replace("0b", "")
+        binary_str = ""
         
-        steps = ""
+        steps = "Quá trình chuyển đổi:\n"
+        steps += f"    Số thập phân: {decimal_num}\n"
+        steps += "    Giải thích:\n"
         quotient = decimal_num
         while quotient > 0:
             remainder = quotient % 2
             quotient = quotient // 2
-            steps += f"{quotient} * 2 + {remainder}, "
-        steps = steps[:-2]  # Loại bỏ dấu phẩy cuối cùng
+            binary_str = str(remainder) + binary_str
+            steps += f"        {quotient} * 2 + {remainder} = {quotient * 2 + remainder}\n"
+        steps = steps[:-1]  # Loại bỏ dòng cuối cùng
         
         return binary_str, steps
