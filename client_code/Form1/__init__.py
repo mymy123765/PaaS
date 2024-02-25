@@ -3,78 +3,43 @@ from anvil import *
 
 class Form1(Form1Template):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
+        # Thiết lập các thành phần và ràng buộc dữ liệu cho Form.
         self.init_components(**properties)
+        
+        # Định nghĩa các hàm chuyển đổi và xử lý sự kiện
+        def thap_phan_sang_nhi_phan(n):
+            result = ""
+            while n > 0:
+                result = str(n % 2) + result
+                n = n // 2
+            return result
 
-    def btn_chuyendoi_click(self, **event_args):
-        try:
-            # Kiểm tra xem người dùng đã nhập và không để trống
-            if not self.box_nhapso.text:
-                raise ValueError("Vui lòng nhập số nhị phân hoặc thập phân.")
-            
-            # Kiểm tra tùy chọn từ DropDown
+        def nhi_phan_sang_thap_phan(binary):
+            result = 0
+            for i in range(len(binary)):
+                result += int(binary[i]) * 2**(len(binary) - 1 - i)
+            return result
+
+        def chuyen_doi_click(self, **event_args):
+            input_value = int(self.box_nhapso.text)
             option = self.box_luachon.selected_value
-
-            if option == "Chuyển số nhị phân sang thập phân":
-                # Kiểm tra tính hợp lệ của box_nhapso nếu chuyển nhị phân sang thập phân
-                binary_input = self.box_nhapso.text
-                if not set(binary_input).issubset({'0', '1'}):
-                    raise ValueError("Nhập không hợp lệ cho số nhị phân.")
-                
-                result, steps = self.binary_to_decimal(binary_input)
-                self.box_ketqua.text = f"{result}\n"
-                self.box_ketqua.enabled = False
-                self.box_giaithuat.text = f"{steps}\n"
-                self.box_giaithuat.enabled = False
-
-            elif option == "Chuyển số thập phân sang nhị phân":
-                # Kiểm tra tính hợp lệ của box_nhapso nếu chuyển thập phân sang nhị phân
-                decimal_input = self.box_nhapso.text
-                if not decimal_input.isdigit():
-                    raise ValueError("Nhập không hợp lệ cho số thập phân.")
-                
-                result, steps = self.decimal_to_binary(int(decimal_input))
-                self.box_ketqua.text = f"{result}\n"
-                self.box_ketqua.enabled = False
-                self.box_giaithuat.text = f"{steps}\n"
-                self.box_giaithuat.enabled = False
-
+            if option == "Chuyển số thập phân sang nhị phân":
+                self.box_giaithuat.text = "Thập phân: {}\nQuá trình:\n".format(input_value)
+                binary_result = thap_phan_sang_nhi_phan(input_value)
+                for i in range(len(binary_result)):
+                    self.box_giaithuat.text += "• {} % 2 = {} (phần dư)\n".format(input_value, binary_result[i])
+                    input_value //= 2
+                self.box_giaithuat.text += "Chuỗi nhị phân: {}".format(binary_result[::-1])
+            elif option == "Chuyển số nhị phân sang thập phân":
+                self.box_giaithuat.text = "Nhị phân: {}\nQuá trình:\n".format(input_value)
+                decimal_result = nhi_phan_sang_thap_phan(str(input_value))
+                binary_str = str(input_value)
+                for i in range(len(binary_str)):
+                    if binary_str[i] == '1':
+                        self.box_giaithuat.text += "• 1 x 2^ {} = {}\n".format(len(binary_str) - 1 - i, 2 ** (len(binary_str) - 1 - i))
+                self.box_giaithuat.text += "Kết quả: {}".format(decimal_result)
             else:
-                raise ValueError("Tùy chọn không hợp lệ.")
-
-        except ValueError as e:
-            # Hiển thị thông báo lỗi
-            alert(e)
-            
-    # Any code you write here will run before the form opens.
-    def binary_to_decimal(self, binary_str):
-        decimal_num = 0
-        
-        steps = "Quá trình chuyển đổi:\n"
-        steps += f"    Số nhị phân: {binary_str}\n"
-        steps += "    Giải thích:\n"
-        for i, digit in enumerate(reversed(binary_str)):
-            power = len(binary_str) - i - 1
-            if digit == '1':
-                decimal_num += 2 ** power
-                steps += f"        {digit} x 2^{power} = {2 ** power}\n"
-            else:
-                steps += f"        {digit} x 2^{power} = 0 (bỏ qua)\n"
-
-        return decimal_num, steps
-    
-    def decimal_to_binary(self, decimal_num):
-        binary_str = ""
-        
-        steps = "Quá trình chuyển đổi:\n"
-        steps += f"    Số thập phân: {decimal_num}\n"
-        steps += "    Giải thích:\n"
-        quotient = decimal_num
-        while quotient > 0:
-            remainder = quotient % 2
-            quotient = quotient // 2
-            binary_str = str(remainder) + binary_str
-            steps += f"        {quotient} * 2 + {remainder} = {quotient * 2 + remainder}\n"
-        steps = steps[:-1]  # Loại bỏ dòng cuối cùng
-        
-        return binary_str, steps
+                self.box_giaithuat.text = "Vui lòng chọn một phương pháp chuyển đổi!"
+                
+        # Gán sự kiện cho nút chuyển đổi
+        self.btn_chuyendoi.set_event_handler("click", chuyen_doi_click)
