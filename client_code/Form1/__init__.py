@@ -54,9 +54,9 @@ class Form1(Form1Template):
         for i, digit in enumerate(binary_str):
             power = len(binary_str) - i - 1
             if digit == '1':
-                steps.append(f" | Bước {i + 1}: {digit} x 2^{power} = {int(digit) * (2 ** power)}")
+                steps.append(f" | Bước {i + 1}: {digit} x 2^{power} = {int(digit) * (2 ** power)} |")
             else:
-                steps.append(f" | Bước {i + 1}: {digit} x 2^{power} = 0 (bỏ qua)")
+                steps.append(f" | Bước {i + 1}: {digit} x 2^{power} = 0 (bỏ qua) |")
         
         return decimal_num, "\n".join(steps)
 
@@ -68,7 +68,7 @@ class Form1(Form1Template):
         step_count = 1
         while decimal_num > 0:
             remainder = decimal_num % 2
-            steps.append(f" | Bước {step_count}: {decimal_num} % 2 = {remainder} (phần dư)")
+            steps.append(f" | Bước {step_count}: {decimal_num} % 2 = {remainder} (phần dư) |")
             decimal_num = decimal_num // 2
             binary_str = str(remainder) + binary_str
             step_count += 1

@@ -52,9 +52,9 @@ components:
       type: Label
       layout_properties: {grid_position: 'MGSRII,URGAIS'}
     - name: box_giaithuat
-      properties: {enabled: false}
-      type: TextBox
-      layout_properties: {grid_position: 'JSRPVD,DOWMIU'}
+      properties: {enabled: false, height: 142.19998168945312}
+      type: TextArea
+      layout_properties: {grid_position: 'KWXEOE,DURXXD'}
   - name: outlined_card_3
     properties: {role: outlined-card}
     type: ColumnPanel
