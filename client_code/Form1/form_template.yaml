@@ -8,14 +8,18 @@ components:
   type: Label
   layout_properties: {slot: title}
 - name: outlined_card_1
-  properties: {role: outlined-card}
+  properties: {role: outlined-card, col_widths: '{"VSXKIH":15,"UIUPPD":45}'}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
+  - name: image_1
+    properties: {height: 296.79998779296875, source: _/theme/Baroibeo.png, horizontal_align: left}
+    type: Image
+    layout_properties: {grid_position: 'PERROZ,VSXKIH'}
   - name: outlined_card_4
     properties: {role: outlined-card}
     type: ColumnPanel
-    layout_properties: {grid_position: 'MMOFHZ,GGGGCW'}
+    layout_properties: {grid_position: 'PERROZ,UIUPPD MMOFHZ,GGGGCW'}
     components:
     - name: box_luachon
       properties:
@@ -27,7 +31,7 @@ components:
   - name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel
-    layout_properties: {grid_position: 'TEOELN,TIVUQY'}
+    layout_properties: {grid_position: 'PERROZ,UIUPPD TEOELN,TIVUQY'}
     components:
     - name: label_2
       properties: {text: Nhập số}
@@ -58,7 +62,7 @@ components:
   - name: outlined_card_3
     properties: {role: outlined-card}
     type: ColumnPanel
-    layout_properties: {grid_position: 'ESVYJB,FAWTWR'}
+    layout_properties: {grid_position: 'PERROZ,UIUPPD ESVYJB,FAWTWR'}
     components:
     - name: btn_chuyendoi
       properties: {text: Chuyển đổi}
