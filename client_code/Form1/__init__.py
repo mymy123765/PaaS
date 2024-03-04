@@ -80,8 +80,8 @@ class Form1(Form1Template):
         data = self.box_ketqua.text.strip()  # Lấy dữ liệu từ box_ketqua và loại bỏ khoảng trắng thừa
 
         if data:  # Kiểm tra xem dữ liệu có tồn tại không
-            get_open_form().call_js('cpy')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_ketqua vào clipboard
-            alert("Đã sao chép dữ liệu thành công!")
+            self.call_js('cpy')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_ketqua vào clipboard
+            alert("Đã sao chép kết quả thành công!")
         else:
             alert("Không có dữ liệu để sao chép!")
 
@@ -91,8 +91,8 @@ class Form1(Form1Template):
         data = self.box_giaithuat.text.strip()  # Lấy dữ liệu từ box_giaithuat và loại bỏ khoảng trắng thừa
 
         if data:  # Kiểm tra xem dữ liệu có tồn tại không
-            get_open_form().call_js('cpy1')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_giaithuat vào clipboard
-            alert("Đã sao chép dữ liệu thành công!")
+            self.call_js('cpy1')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_giaithuat vào clipboard
+            alert("Đã sao chép giải thuật thành công!")
         else:
             alert("Không có dữ liệu để sao chép!")
 

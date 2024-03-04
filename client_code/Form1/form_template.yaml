@@ -12,10 +12,6 @@ components:
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
-  - name: image_1
-    properties: {height: 296.79998779296875, source: _/theme/Baroibeo.png, horizontal_align: left}
-    type: Image
-    layout_properties: {grid_position: 'PERROZ,VSXKIH'}
   - name: outlined_card_4
     properties: {role: outlined-card}
     type: ColumnPanel
@@ -30,7 +26,7 @@ components:
       layout_properties: {grid_position: 'RFFXUI,LDBYBF'}
       event_bindings: {change: box_luachon_change}
   - name: outlined_card_2
-    properties: {role: outlined-card, col_widths: '{"IOTPHY":50,"MTDHUO":10,"DURXXD":50,"WLIKCQ":10}'}
+    properties: {role: outlined-card, col_widths: '{"IOTPHY":55,"MTDHUO":5,"DURXXD":55,"WLIKCQ":5}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'PERROZ,UIUPPD TEOELN,TIVUQY'}
     components:
@@ -48,13 +44,13 @@ components:
       type: Label
       layout_properties: {grid_position: 'XYGJVU,LDVNWV'}
     - name: box_ketqua
-      properties: {enabled: true, visible: true, role: copysource}
+      properties: {enabled: false, visible: true, role: copysource}
       type: TextBox
       layout_properties: {grid_position: 'YLSXMF,IOTPHY'}
       event_bindings: {pressed_enter: box_ketqua_pressed_enter}
       data_bindings: []
     - name: btn_copy1
-      properties: {text: copy, align: center, role: null}
+      properties: {text: '', align: center, role: null, icon: 'fa:copy'}
       type: Button
       layout_properties: {grid_position: 'YLSXMF,MTDHUO'}
       event_bindings: {click: btn_copy1_click}
@@ -63,12 +59,12 @@ components:
       type: Label
       layout_properties: {grid_position: 'MGSRII,URGAIS'}
     - name: box_giaithuat
-      properties: {enabled: true, height: 206, visible: true, role: copysource}
+      properties: {enabled: false, height: 224.79998779296875, visible: true, role: copysource}
       type: TextArea
       layout_properties: {grid_position: 'KWXEOE,DURXXD'}
       data_bindings: []
     - name: btn_copy2
-      properties: {text: copy}
+      properties: {text: '', icon: 'fa:copy'}
       type: Button
       layout_properties: {grid_position: 'KWXEOE,WLIKCQ'}
       event_bindings: {click: btn_copy2_click}
