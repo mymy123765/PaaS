@@ -8,7 +8,7 @@ allow_embedding: false
 name: Phần PaaS | Đề tài 6
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
-metadata: {logo_img: 'asset:tải xuống.png', description: Chuyển đổi số nhị phân sang thập phân,
+metadata: {logo_img: 'asset:logo.png', description: Chuyển đổi số nhị phân sang thập phân,
   title: Nhóm Baroibeo}
 startup_form: Form1
 renamed: true

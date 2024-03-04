@@ -74,3 +74,10 @@ class Form1(Form1Template):
             step_count += 1
         
         return binary_str, "\n".join(steps)
+
+    def btn_copy1_click(self, **event_args):
+      self.call_js("cpy")
+
+    def btn_copy2_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      self.call_js("cpy")

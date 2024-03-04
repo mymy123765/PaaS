@@ -29,7 +29,7 @@ components:
       layout_properties: {grid_position: 'RFFXUI,LDBYBF'}
       event_bindings: {change: box_luachon_change}
   - name: outlined_card_2
-    properties: {role: outlined-card}
+    properties: {role: outlined-card, col_widths: '{"IOTPHY":50,"MTDHUO":10,"DURXXD":50,"WLIKCQ":10}'}
     type: ColumnPanel
     layout_properties: {grid_position: 'PERROZ,UIUPPD TEOELN,TIVUQY'}
     components:
@@ -47,18 +47,28 @@ components:
       type: Label
       layout_properties: {grid_position: 'XYGJVU,LDVNWV'}
     - name: box_ketqua
-      properties: {enabled: false}
+      properties: {enabled: false, visible: true}
       type: TextBox
       layout_properties: {grid_position: 'YLSXMF,IOTPHY'}
       event_bindings: {pressed_enter: box_ketqua_pressed_enter}
+    - name: btn_copy1
+      properties: {text: copy, align: center, role: null}
+      type: Button
+      layout_properties: {grid_position: 'YLSXMF,MTDHUO'}
+      event_bindings: {click: btn_copy1_click}
     - name: label_4
       properties: {text: Giải thuật}
       type: Label
       layout_properties: {grid_position: 'MGSRII,URGAIS'}
     - name: box_giaithuat
-      properties: {enabled: false, height: 142.19998168945312}
+      properties: {enabled: false, height: 206, visible: true}
       type: TextArea
       layout_properties: {grid_position: 'KWXEOE,DURXXD'}
+    - name: btn_copy2
+      properties: {text: copy}
+      type: Button
+      layout_properties: {grid_position: 'KWXEOE,WLIKCQ'}
+      event_bindings: {click: btn_copy2_click}
   - name: outlined_card_3
     properties: {role: outlined-card}
     type: ColumnPanel
@@ -69,3 +79,4 @@ components:
       type: Button
       layout_properties: {grid_position: 'HLPWRD,CMUTAT'}
       event_bindings: {click: btn_chuyendoi_click}
+      data_bindings: []
