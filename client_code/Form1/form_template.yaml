@@ -25,6 +25,7 @@ components:
       properties:
         items: [Chuyển số nhị phân sang thập phân, Chuyển số thập phân sang nhị phân]
         align: full
+        role: null
       type: DropDown
       layout_properties: {grid_position: 'RFFXUI,LDBYBF'}
       event_bindings: {change: box_luachon_change}
@@ -38,7 +39,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'PQRFXI,VXKDCC'}
     - name: box_nhapso
-      properties: {}
+      properties: {role: null}
       type: TextBox
       layout_properties: {grid_position: 'IJQSGM,GLNRWD'}
       event_bindings: {pressed_enter: box_nhapso_pressed_enter}
@@ -47,7 +48,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'XYGJVU,LDVNWV'}
     - name: box_ketqua
-      properties: {enabled: false, visible: true, role: copysource}
+      properties: {enabled: true, visible: true, role: copysource}
       type: TextBox
       layout_properties: {grid_position: 'YLSXMF,IOTPHY'}
       event_bindings: {pressed_enter: box_ketqua_pressed_enter}
@@ -62,7 +63,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'MGSRII,URGAIS'}
     - name: box_giaithuat
-      properties: {enabled: false, height: 206, visible: true, role: null}
+      properties: {enabled: true, height: 206, visible: true, role: copysource}
       type: TextArea
       layout_properties: {grid_position: 'KWXEOE,DURXXD'}
       data_bindings: []

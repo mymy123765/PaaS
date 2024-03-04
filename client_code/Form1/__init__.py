@@ -1,6 +1,5 @@
 from ._anvil_designer import Form1Template
 from anvil import *
-import anvil.server
 
 class Form1(Form1Template):
     def __init__(self, **properties):
@@ -24,9 +23,9 @@ class Form1(Form1Template):
                 
                 result, steps = self.binary_to_decimal(binary_input)
                 self.box_ketqua.text = f"{result}\n"
-                self.box_ketqua.enabled = False
+                self.box_ketqua.enabled = True
                 self.box_giaithuat.text = f"{steps}\n"
-                self.box_giaithuat.enabled = False
+                self.box_giaithuat.enabled = True
 
             elif option == "Chuyển số thập phân sang nhị phân":
                 # Kiểm tra tính hợp lệ của box_nhapso nếu chuyển thập phân sang nhị phân
@@ -36,9 +35,9 @@ class Form1(Form1Template):
                 
                 result, steps = self.decimal_to_binary(int(decimal_input))
                 self.box_ketqua.text = f"{result}\n"
-                self.box_ketqua.enabled = False
+                self.box_ketqua.enabled = True
                 self.box_giaithuat.text = f"{steps}\n"
-                self.box_giaithuat.enabled = False
+                self.box_giaithuat.enabled = True
 
             else:
                 raise ValueError("Tùy chọn không hợp lệ.")
@@ -92,7 +91,7 @@ class Form1(Form1Template):
         data = self.box_giaithuat.text.strip()  # Lấy dữ liệu từ box_giaithuat và loại bỏ khoảng trắng thừa
 
         if data:  # Kiểm tra xem dữ liệu có tồn tại không
-            get_open_form().call_js('cpy')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_giaithuat vào clipboard
+            get_open_form().call_js('cpy1')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_giaithuat vào clipboard
             alert("Đã sao chép dữ liệu thành công!")
         else:
             alert("Không có dữ liệu để sao chép!")
