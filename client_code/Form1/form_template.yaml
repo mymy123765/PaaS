@@ -47,7 +47,7 @@ components:
       type: Label
       layout_properties: {grid_position: 'XYGJVU,LDVNWV'}
     - name: box_ketqua
-      properties: {enabled: false, visible: true, role: null}
+      properties: {enabled: false, visible: true, role: copysource}
       type: TextBox
       layout_properties: {grid_position: 'YLSXMF,IOTPHY'}
       event_bindings: {pressed_enter: box_ketqua_pressed_enter}

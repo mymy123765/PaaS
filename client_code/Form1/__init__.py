@@ -77,9 +77,23 @@ class Form1(Form1Template):
         return binary_str, "\n".join(steps)
 
     def btn_copy1_click(self, **event_args):
-      self.call_js("copyToClipboard", self.box_ketqua)
+        """Xử lý khi người dùng nhấp vào nút btn_copy1"""
+        data = self.box_ketqua.text.strip()  # Lấy dữ liệu từ box_ketqua và loại bỏ khoảng trắng thừa
+
+        if data:  # Kiểm tra xem dữ liệu có tồn tại không
+            self.call_js('cpy')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_ketqua vào clipboard
+            alert("Đã sao chép dữ liệu thành công!")
+        else:
+            alert("Không có dữ liệu để sao chép!")
+
 
     def btn_copy2_click(self, **event_args):
-      """This method is called when the button is clicked"""
-      self.call_js("cpy")
+        """Xử lý khi người dùng nhấp vào nút btn_copy2"""
+        data = self.box_giaithuat.text.strip()  # Lấy dữ liệu từ box_giaithuat và loại bỏ khoảng trắng thừa
+
+        if data:  # Kiểm tra xem dữ liệu có tồn tại không
+            self.call_js('cpy')  # Gọi hàm JavaScript để sao chép dữ liệu từ box_giaithuat vào clipboard
+            alert("Đã sao chép dữ liệu thành công!")
+        else:
+            alert("Không có dữ liệu để sao chép!")
 

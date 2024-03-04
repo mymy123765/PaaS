@@ -49,7 +49,12 @@ roles:
   components: [TextBox, TextArea, DatePicker, DropDown]
 - name: input-error
   components: [TextBox, TextArea, DatePicker, DropDown]
-- {name: copysource, components: null, display_in_toolbox: true, title: ''}
+- name: copysource
+  components: []
+  display_in_toolbox: false
+  title: ''
+- name: dense
+  components: [TextBox]
 color_scheme:
   preset_groups:
   - name: Colour Scheme
