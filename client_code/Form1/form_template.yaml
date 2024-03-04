@@ -47,10 +47,11 @@ components:
       type: Label
       layout_properties: {grid_position: 'XYGJVU,LDVNWV'}
     - name: box_ketqua
-      properties: {enabled: false, visible: true}
+      properties: {enabled: false, visible: true, role: null}
       type: TextBox
       layout_properties: {grid_position: 'YLSXMF,IOTPHY'}
       event_bindings: {pressed_enter: box_ketqua_pressed_enter}
+      data_bindings: []
     - name: btn_copy1
       properties: {text: copy, align: center, role: null}
       type: Button
@@ -61,9 +62,10 @@ components:
       type: Label
       layout_properties: {grid_position: 'MGSRII,URGAIS'}
     - name: box_giaithuat
-      properties: {enabled: false, height: 206, visible: true}
+      properties: {enabled: false, height: 206, visible: true, role: null}
       type: TextArea
       layout_properties: {grid_position: 'KWXEOE,DURXXD'}
+      data_bindings: []
     - name: btn_copy2
       properties: {text: copy}
       type: Button

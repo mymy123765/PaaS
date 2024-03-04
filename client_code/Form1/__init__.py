@@ -1,5 +1,6 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 
 class Form1(Form1Template):
     def __init__(self, **properties):
@@ -76,8 +77,9 @@ class Form1(Form1Template):
         return binary_str, "\n".join(steps)
 
     def btn_copy1_click(self, **event_args):
-      self.call_js("cpy")
+      self.call_js("copyToClipboard", self.box_ketqua)
 
     def btn_copy2_click(self, **event_args):
       """This method is called when the button is clicked"""
       self.call_js("cpy")
+
