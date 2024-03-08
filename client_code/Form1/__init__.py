@@ -30,10 +30,8 @@ class Form1(Form1Template):
             elif option == "Chuyển số thập phân sang nhị phân":
                 # Kiểm tra tính hợp lệ của box_nhapso nếu chuyển thập phân sang nhị phân
                 decimal_input = self.box_nhapso.text
-                if not decimal_input.isdigit():
-                    raise ValueError("Nhập không hợp lệ cho số thập phân.")
                 
-                result, steps = self.decimal_to_binary(int(decimal_input))
+                result, steps = self.decimal_to_binary(float(decimal_input))
                 self.box_ketqua.text = f"{result}\n"
                 self.box_ketqua.enabled = True
                 self.box_giaithuat.text = f"{steps}\n"
@@ -61,19 +59,51 @@ class Form1(Form1Template):
         return decimal_num, "\n".join(steps)
 
     def decimal_to_binary(self, decimal_num):
+        if decimal_num == 0:
+            return "0", "Không có bước nào cần thực hiện vì số decimal là 0."
+    
         binary_str = ""
-        
         steps = []
         steps.append("Giải thuật:")
         step_count = 1
-        while decimal_num > 0:
-            remainder = decimal_num % 2
-            steps.append(f" | Bước {step_count}: {decimal_num} % 2 = {remainder} (phần dư) |")
-            decimal_num = decimal_num // 2
-            binary_str = str(remainder) + binary_str
-            step_count += 1
-        
-        return binary_str, "\n".join(steps)
+    
+        sign = "-" if decimal_num < 0 else ""  # Dấu của số, mặc định là không có nếu là số dương
+        decimal_num = abs(decimal_num)
+    
+        integer_part = int(decimal_num)
+        fraction_part = decimal_num - integer_part
+    
+        # Chuyển phần nguyên sang nhị phân
+        if integer_part == 0:
+            binary_str += "0"
+        else:
+            while integer_part > 0:
+                remainder = integer_part % 2
+                steps.append(f" | Bước {step_count}: {integer_part} % 2 = {remainder} (phần dư) |")
+                integer_part = integer_part // 2
+                binary_str = str(remainder) + binary_str
+                step_count += 1
+    
+        # Nếu có phần thập phân, chuyển phần thập phân sang nhị phân
+        if fraction_part != 0:
+            binary_str += "."  # Thêm dấu chấm để biểu diễn phần thập phân trong nhị phân
+    
+            max_precision = 20  # Số lần lặp tối đa để tránh vòng lặp vô hạn
+            precision = 0
+    
+            while fraction_part != 0 and precision < max_precision:
+                fraction_part *= 2
+                integer_part = int(fraction_part)
+                binary_str += str(integer_part)
+                fraction_part -= integer_part
+                precision += 1
+    
+                steps.append(f" | Bước {step_count}: {fraction_part} * 2 = {integer_part} (phần nguyên) |")
+                step_count += 1
+    
+        return sign + binary_str, "\n".join(steps)
+
+
 
     def btn_copy1_click(self, **event_args):
         """Xử lý khi người dùng nhấp vào nút btn_copy1"""
